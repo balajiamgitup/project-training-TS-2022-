@@ -257,4 +257,107 @@ test("Searching Front Technologies",()=>{
     expect(result).toBe("PHP");
 });
 //////////////////////////////////////////////////////////////////////////////////////////////////////
+//ECOM
+var x=require("prompt-sync")();
+var qq1;
+var redmi;
+var oneplus;
+var sumsung;
+var ord=[];
+class Ecom{
+    constructor(){
+        this.customer;
+        this.order;
+        this.product;
+        this.promotion;
+    }
+    customer=function(){
+      var q1=x("Enter name :");
+      var q2=x("Enter mobile number :");
+      var q3=x("Enter the password :");
+      console.log("Account is created");
+      var a="true";
+      while(a!="false"){
+      var q4=x("Enter name :");
+      var q5=x("Enter password :");
+      if(q1===q4 && q3===q5){
+          console.log("LOgin is success");
+         a="false";
+      }
+      else{
+          console.log("login failed pls try agin ")
+      }
+    }
+}
+product=function(){
+    console.log("Mobiles Brands Available \n 1) Redmi \n2)Sumsung \n3)OnePlus");
+     redmi=["Redmi Note 11T 5G","10000","Redmi Note 11 pro+5G","20000"];
+   oneplus=["OnePlus Nord CE 2 5G ","15000","OnePlus 10 Pro 5g","18000"];
+   sumsung=["Samsung Galaxy M12","16000","Sumsung Galaxy M32","21000"];
+}
+promotion=function(){
+   if(qq1=="redmi"){
+    console.log("You have 20% offer on "+redmi[0] +" Offer will be close in 2 days");
+   }
+}
+order=function(){
+    var s="true";
+    var z=0;
+  while(s!="false"){
+     qq1=x("Enter the brand : ");
+     z++;
+     if(qq1=="redmi"){
+        var f=1;
+        for(var  i=0;i<redmi.length;i++){
+            console.log(f++ +")"+redmi[i] +"        "+redmi[++i]);
+        }
+        this.promotion();
+      var q1=x("Enter which phone you want :");
+      if(q1=="1"){
+        ord[++z]=redmi[0],redmi[1];
+      }
+      else {
+        ord[++z]=redmi[2],redmi[3];
+      }
+      console.log("Your oreder = "+ord)
+    }
+    else if(qq1=="oneplus"){
+        var f=1;
+        for(var  i=0;i<oneplus.length;i++){
+            console.log(f++ +")"+oneplus[i] +"        "+oneplus[++i]);
+        }
+    }
+    else if(qq1=="sumsung"){
+        var f=1;
+        for(var  i=0;i<sumsung.length;i++){
+            console.log(f++ +")"+sumsung[i] +"        "+sumsung[++i]);
+        }
+    }
+    var q6=x("You want to cancel order : ");
+if(q6=="yes"){
+    ord=null;
+    console.log("Your order canceled ")
+}
+else{
+var q7=x("You want to order again : ")
+ if(q7=="yes"){
+     s="true";
+ }
+ else{
+     s="false";
+ }
+}
+  }
+}
+search(){
+    console.log
+}
+}
+
+var e=new Ecom();
+//e.customer();
+
+e.product();
+e.order();
+
 
