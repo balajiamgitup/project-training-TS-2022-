@@ -1,16 +1,18 @@
 {
-  "name": "data_base",
+  "name": "day10",
   "version": "1.0.0",
-  "main": "db.js",
+  "description": "",
+  "main": "demo.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "express": "^4.18.1",
-    "mysql": "^2.18.1"
+  "devDependencies": {
+    "jest": "^28.1.1"
   },
-  "description": ""
+  "dependencies": {
+    "directory-tree": "^3.3.0"
+  }
 }
