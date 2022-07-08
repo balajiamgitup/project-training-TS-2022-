@@ -2,7 +2,7 @@ var z = require("./demo")
 var x = require("prompt-sync")();
 exports.det = function detail() {
     function table() {
-        console.log(" 1) Add Technologies \n2)Edit Technologies \n3)Delete Tecnologies\n4)Exit\n5)Print 6)Save\n----------------------");
+        console.log(" 1) Add Technologies \n2)Edit Technologies \n3)Delete Tecnologies\n4)Exit\n5)Print 6)Save7)Print saved data \n----------------------");
         console.log("<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>");
         q2 = x("Enter the option : ");
     }
@@ -52,20 +52,28 @@ exports.det = function detail() {
        else if (q2 == "5") {
            var q1=x("Enter which technology want to print : ")
            if(q1=="front"){
+            z.front=z.ht.values;
             console.log("Frontend Technologies\n========================")
-            console.log(z.front)}
-            else{
+            console.log(z.front)
+        }
+            else if(q1=="back"){
+                z.back=z.ht.values;
             console.log("Backend Technologies\n========================")
-            console.log(z.ht.printAll())}
+            console.log(z.back)
+        }
             table();
         }
      else   if (q2 == "4") {
-         z.filePrinting();
             console.log("Thank you for using these application")
             s = "false";
         }
         else if (q2=="6"){
-            z.storing();
+         z.storing();
+            table();
+        }
+        else if(q2=="7"){
+            z.filePrinting();
+            table();
         }
     }
 } 
