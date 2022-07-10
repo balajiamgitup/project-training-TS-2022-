@@ -16,4 +16,3 @@ if (qq == "yes") {
 else {
     console.log("END")
 }
-

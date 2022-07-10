@@ -4,7 +4,7 @@ var front = {};
 //exports.front;
 var back = {};
 var technlogy = {}
-var empty={};
+var empty = {};
 if (w.q1 == "front") {
     technlogy = front;
 }
@@ -26,19 +26,6 @@ class HashTable {
         return key.toString().length % this.size;
     }
     search(key) {
-        //     if (w.q1 == "front") {
-        //         this.values = this.front;
-        //     }
-        //   else   if (w.q1 == "back") {
-        //         this.values = this.back;
-        //     }
-        // //      if (this.q1 == "front") {
-        // //         this.values = this.front;
-        // //     }
-        // //   else   if (this.q1 == "back") {
-        // //         this.values = this.back;
-        // //     }
-
         const hash = this.calculateHash(key);
         if (
             this.values.hasOwnProperty(hash) &&
@@ -52,18 +39,6 @@ class HashTable {
     //*************************************************** */
     add(key, value) {
         const hash = this.calculateHash(key);
-        //     if (w.q1 == "front") {
-        //         this.values = this.front;
-        //     }
-        //   else   if (w.q1 == "back") {
-        //         this.values = this.back;
-        //     }
-        //     if (this.q1 == "front") {
-        //         this.values = this.front;
-        //     }
-        //   else   if (this.q1 == "back") {
-        //         this.values = this.back;
-        //     }
         if (!this.values.hasOwnProperty(hash)) {
             this.values[hash] = {};
         }
@@ -85,19 +60,6 @@ class HashTable {
         }
     }
     printAll() {
-        //         if (w.q1 == "front") {
-        //             this.values = this.front;
-        //         }
-        //        else  if (w.q1 == "back") {
-        //             this.values = this.back;
-        //         }
-        // //     if (this.q1 == "front") {
-        // //         this.values = this.front;
-        // //     }
-        // //   else   if (this.q1 == "back") {
-        // //         this.values = this.back;
-        // //     }
-        // //          console.log("_________________________________");
         for (const hash in this.values) {
             for (const key in this.values[hash]) {
                 console.log("{", key, ", ", this.values[hash][key], "}")
@@ -121,49 +83,77 @@ var ht = new HashTable();
 // ht.add("1", "SQL Lite");
 // console.log(ht.front);
 // console.log(ht.back)
+function disp(data) {
+    for (const key in data) {
+        console.log(key + "   :   " + data[key])
+    }
+}
 var storing = function () {
     if (w.q1 == "front") {
-        front = ht.values;
-        var data = JSON.stringify(front, null, 2);
-        file.writeFileSync('fontend.txt', data);
-        console.log("Data stored in frontend.txt file ")
-        ht.values=empty;
+        front = ht.values.NaN;
+        var rawdata = file.readFileSync('fontend.txt');
+        if (rawdata.length == 0) {
+            var data = JSON.stringify(front, null, 2);
+            file.appendFileSync('fontend.txt', data);
+            console.log("Data stored in frontend.txt file ")
+            ht.values = empty;
+        }
+        else {
+            console.log("");
+            file.truncateSync('fontend.txt', 0, function () {
+                console.log('File Content Deleted')
+            });
+            let file_data = JSON.parse(rawdata);
+            var add = { ...front, ...file_data };
+            var data = JSON.stringify(add, null, 2);
+            file.appendFileSync('fontend.txt', data);
+            console.log("Data stored in frontend.txt file ")
+            ht.values = empty;
+        }
     }
 
     else if (w.q1 == "back") {
-        back = ht.values;
-        var data = JSON.stringify(back, null, 2);
-        file.writeFileSync('backend.txt', data);
-        console.log("Data stored in backend.txt file ");
-        ht.values=empty;
+        back = ht.values.NaN;
+        var rawdata1 = file.readFileSync('backend.txt');
+        if (rawdata1.length == 0) {
+            var data = JSON.stringify(back, null, 2);
+            file.appendFileSync('backend.txt', data);
+            console.log("Data stored in backend.txt file ")
+            ht.values = empty;
+        }
+        else {
+            console.log("");
+            file.truncateSync('backend.txt', 0, function () {
+                console.log('File Content Deleted')
+            });
+            let file_data = JSON.parse(rawdata1);
+            var add = { ...back, ...file_data };
+            var data = JSON.stringify(add, null, 2);
+            file.appendFileSync('backend.txt', data);
+            console.log("Data stored in backend.txt file ")
+            ht.values = empty;
+        }
     }
     else {
         console.log("Wrong option ")
     }
 }
 var filePrinting = function () {
-    // console.log(file);
-   // if (w.q1 == "front") {
+    if (w.q1 == "front") {
         var rawdata = file.readFileSync('fontend.txt');
         let file_data = JSON.parse(rawdata);
         console.log("<<<<<<<<<<<<<<Frontend Technologies>>>>>>>>>> ");
-       // console.log(file_data.NaN);
-        for(const key in file_data.NaN){
-            console.log(  key +"   :   "+file_data.NaN[key]  )
-          }
- //   }
-   // else if (w.q1 == "back") {
-        var rawdata1= file.readFileSync('backend.txt');
+        disp(file_data);
+    }
+    else if (w.q1 == "back") {
+        var rawdata1 = file.readFileSync('backend.txt');
         let file_data1 = JSON.parse(rawdata1);
         console.log("<<<<<<<<<Backend Technologies>>>>>>>>>>> ");
-       // console.log(file_data1.NaN);
-        for(const key in file_data1.NaN){
-            console.log(   key +"  :   "+file_data1.NaN[key]   )
-          }
-  ///  }
-    //else {
-       // console.log("Wrong option ");
+        disp(file_data1);
+    }
+    else {
+        console.log("Wrong option ");
 
-    //}
+    }
 }
-module.exports = { front, back, storing, ht, filePrinting };
+module.exports = { front, back, storing, ht, filePrinting, disp };

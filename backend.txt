@@ -1,5 +1,6 @@
 {
-  "NaN": {
-    "1": "JAVA"
-  }
+  "1": "javascript",
+  "2": "python",
+  "3": "JAVA",
+  "4": "typescript"
 }

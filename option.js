@@ -1,8 +1,9 @@
 var z = require("./demo")
 var x = require("prompt-sync")();
+var file=require("./savedData");
 exports.det = function detail() {
     function table() {
-        console.log(" 1) Add Technologies \n2)Edit Technologies \n3)Delete Tecnologies\n4)Exit\n5)Print 6)Save7)Print saved data \n----------------------");
+        console.log(" 1) Add Technologies \n2)Edit Technologies \n3)Delete Tecnologies\n4)Exit\n5)Print \n6)Save\n7)Print saved data\n8Edit saved data  \n----------------------");
         console.log("<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>");
         q2 = x("Enter the option : ");
     }
@@ -74,6 +75,10 @@ exports.det = function detail() {
         else if(q2=="7"){
             z.filePrinting();
             table();
+        }
+        else if(q2=="8"){
+         file.edit();
+         table();
         }
     }
 } 

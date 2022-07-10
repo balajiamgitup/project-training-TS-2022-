@@ -1,43 +1,44 @@
 var file=require("fs");
+var main=require("./demo");
 var prompt=require("prompt-sync")();
-function sort(){
-    var input1=prompt("Enter the technology");
-    if(input1=="front"){
-            var rawdata = file.readFileSync('fontend.txt');
-            let file_data = JSON.parse(rawdata);
-           console.log("<<<<<<<<<<<<<<Frontend Technologies>>>>>>>>>> ");
-            for(const key in file_data.NaN){
-                console.log(  key +"   :   "+file_data.NaN[key]  )
-            }
-              }
-              else if(input1=="back"){
-            var rawdata1= file.readFileSync('backend.txt');
-            let file_data1 = JSON.parse(rawdata1);
-            console.log("<<<<<<<<<Backend Technologies>>>>>>>>>>> ");
-            for(const key in file_data1.NaN){
-                console.log(   key +"  :   "+file_data1.NaN[key]   )
-      
-}
-}
-}
 function edit(){
+    var q1=prompt("Enter which techonolgy ypu want edit :");
+    if(q1=="front"){
     var rawdata = file.readFileSync('fontend.txt');
     let file_data = JSON.parse(rawdata);
-   console.log("<<<<<<<<<<<<<<Frontend Technologies>>>>>>>>>> ");
-    for(const key in file_data.NaN){
-        console.log(  key +"   :   "+file_data.NaN[key]  )
+    console.log("<<<<<<<<<<<<<<Frontend Technologies>>>>>>>>>> ");
+    main.disp(file_data);
+    var front_save={};
+    front_save=file_data;
+    var qq1=prompt("Enter  the new key to  : ");
+    var qq2=prompt("Enter the new value : ");
+   front_save[qq1]=qq2;
+   main.disp(front_save);
+     file.truncateSync('fontend.txt', 0, function() {
+});
+var data = JSON.stringify(front_save, null, 2);
+file.appendFileSync('fontend.txt', data);
     }
-    var 
+else if (q1=="back"){
+    var rawdata = file.readFileSync('backend.txt');
+    let file_data = JSON.parse(rawdata);
+    console.log("<<<<<<<<<<<<<<Frontend Technologies>>>>>>>>>> ");
+    main.disp(file_data);
+    var front_save={};
+    front_save=file_data;
+    var qq1=prompt("Enter  the new key to  : ");
+    var qq2=prompt("Enter the new value : ");
+   front_save[qq1]=qq2;
+   main.disp(front_save);
+     file.truncateSync('backend.txt', 0, function() {
+});
+var data = JSON.stringify(front_save, null, 2);
+file.appendFileSync('backend.txt', data);
 }
-module.exports={sort};
-// var arr=[];
-// var key =parseInt( Object.keys(file_data.NaN));
+else 
+console.log("You entered wrong technollogy pls check :")
 
-// Object.keys(file_data.NaN).forEach(key => {  
-//   var k=key;
-//   arr.push(parseInt(k));
-// })
-// //console.log(arr);
-// var sorted = arr.sort
-// ((a,b)=>a-b);
-// console.log("Sorted order "+sorted);
+}
+//module.exports={sort};
+module.exports={ edit};
+//edit();
