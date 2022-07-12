@@ -1,17 +1,22 @@
 // var mysql = require('mysql');
-var loadmysql=require("./mysql");
-var con = loadmysql.mysql.createConnection({
+var loadmysql=require("mysql");
+var connection = loadmysql.createConnection({
   host: "localhost",
   user: "root",
   password: ""
 });
 
-
-con.connect(function(err) {
-    if (err) {
-    //   return console.error('error: ' + err.message);
-    return console.log("Sorry connection failed")
-    }
-  
-    console.log('Connected to the MySQL server.');
-  });
+try{
+connection.connect(function(error){
+  if(error) throw new Error("connection failed ");
+  console.log("Server connected ");
+  var sql="CREATE DATABASE mydb";
+  connection.query(sql,function(error,result){
+      if(error) throw new Error("Db failed ");;
+      console.log("Db Success");
+  })
+});
+}
+catch(e){
+  console.log(e.message);
+}
