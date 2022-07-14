@@ -1,0 +1,10 @@
+{
+  "Ordereditems": [
+    "Idlli"
+  ],
+  "Amount": [
+    50
+  ],
+  "Tablenumber": "1a",
+  "Ordernumber": "401"
+}
