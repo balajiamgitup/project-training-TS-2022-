@@ -1,0 +1,9 @@
+{
+  "Ordereditems": [
+    "Idlli"
+  ],
+  "Amount": 55,
+  "Tablenumber": "1a",
+  "Ordernumber": "401",
+  "OrderStatus": "Booked"
+}
